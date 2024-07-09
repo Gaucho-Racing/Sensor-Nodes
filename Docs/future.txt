@@ -1,0 +1,29 @@
+What does the future hold?
+	Not much for me sadly :(
+Why?
+	Because I want to make this entire project to work with Zephyr RTOS
+Why?
+	Why not?
+
+
+Software TODO:
+	I2C
+	UART
+	SPI
+	Zephyr RTOS maybe
+	Clean code and comment for useability
+	Add more examples
+	
+
+Hardware TODO:
+	Lower price to try to add both USB and UART->USB controler
+	Use TPS54331DR as a buck converter instead as it is cheaper (basic part @ JLC)
+	Find an inductor that works w/ it
+	Remap 5V and 12V (on silkscreen) because I fuck up
+	Standardize the board so that it fits into breadboards
+	Add some sort of mounting (most likely m3 holes)
+	Maybe update current tranciver to TJA to make it more standard and remove J Pads
+	Add either boot selector buttons or jumpers to B1 and B2 (make programming over USB possible)
+		This still needs USHART1 and some sort of USB transciever 
+	USB con most likely will be micro B as it is cheaper and teensy already has micro B
+	
