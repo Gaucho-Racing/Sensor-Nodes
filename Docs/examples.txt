@@ -1,3 +1,6 @@
+Will add examples when I get them to work by themselves and then port them into src
+	shouldn't be bad 
+
 The following examples have been implemented:
 	CAN with RX and TX using interupts 
 	-working on getting UART with DMA setup for easier debugging
