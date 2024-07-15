@@ -1,0 +1,253 @@
+ARM GAS  /var/folders/vs/j2g7j5tn4zl844ys43q9j5sm0000gn/T//ccOeWMqC.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"uart.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Core/libdep/UART/uart.c"
+  18              		.section	.text.init,"ax",%progbits
+  19              		.align	1
+  20              		.global	init
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	init:
+  26              	.LVL0:
+  27              	.LFB65:
+   1:Core/libdep/UART/uart.c **** #include "uart.h"
+   2:Core/libdep/UART/uart.c **** #include "stm32f1xx_hal.h"
+   3:Core/libdep/UART/uart.c **** #include <string.h>
+   4:Core/libdep/UART/uart.c **** 
+   5:Core/libdep/UART/uart.c **** uint8_t init(uart_t *uart, UART_HandleTypeDef *huart, IRQn_Type DMA_type, uint32_t baudrate, USART_
+  28              		.loc 1 5 119 view -0
+  29              		.cfi_startproc
+  30              		@ args = 4, pretend = 0, frame = 8
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		.loc 1 5 119 is_stmt 0 view .LVU1
+  33 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 20
+  36              		.cfi_offset 4, -20
+  37              		.cfi_offset 5, -16
+  38              		.cfi_offset 6, -12
+  39              		.cfi_offset 7, -8
+  40              		.cfi_offset 14, -4
+  41 0002 83B0     		sub	sp, sp, #12
+  42              	.LCFI1:
+  43              		.cfi_def_cfa_offset 32
+  44 0004 0446     		mov	r4, r0
+  45 0006 0D46     		mov	r5, r1
+  46 0008 1646     		mov	r6, r2
+  47 000a 1F46     		mov	r7, r3
+   6:Core/libdep/UART/uart.c ****     __HAL_RCC_DMA1_CLK_ENABLE();
+  48              		.loc 1 6 5 is_stmt 1 view .LVU2
+  49              	.LBB2:
+  50              		.loc 1 6 5 view .LVU3
+  51              		.loc 1 6 5 view .LVU4
+  52 000c 164B     		ldr	r3, .L3
+ARM GAS  /var/folders/vs/j2g7j5tn4zl844ys43q9j5sm0000gn/T//ccOeWMqC.s 			page 2
+
+
+  53              	.LVL1:
+  54              		.loc 1 6 5 is_stmt 0 view .LVU5
+  55 000e 5A69     		ldr	r2, [r3, #20]
+  56              	.LVL2:
+  57              		.loc 1 6 5 view .LVU6
+  58 0010 42F00102 		orr	r2, r2, #1
+  59 0014 5A61     		str	r2, [r3, #20]
+  60              	.LVL3:
+  61              		.loc 1 6 5 is_stmt 1 view .LVU7
+  62 0016 5B69     		ldr	r3, [r3, #20]
+  63 0018 03F00103 		and	r3, r3, #1
+  64 001c 0193     		str	r3, [sp, #4]
+  65              		.loc 1 6 5 view .LVU8
+  66 001e 019B     		ldr	r3, [sp, #4]
+  67              	.LBE2:
+  68              		.loc 1 6 5 view .LVU9
+   7:Core/libdep/UART/uart.c ****     HAL_NVIC_SetPriority(DMA_type, 0, 0);
+  69              		.loc 1 7 5 view .LVU10
+  70 0020 0022     		movs	r2, #0
+  71 0022 1146     		mov	r1, r2
+  72              	.LVL4:
+  73              		.loc 1 7 5 is_stmt 0 view .LVU11
+  74 0024 3046     		mov	r0, r6
+  75              	.LVL5:
+  76              		.loc 1 7 5 view .LVU12
+  77 0026 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+  78              	.LVL6:
+   8:Core/libdep/UART/uart.c ****     HAL_NVIC_EnableIRQ(DMA_type);
+  79              		.loc 1 8 5 is_stmt 1 view .LVU13
+  80 002a 3046     		mov	r0, r6
+  81 002c FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+  82              	.LVL7:
+   9:Core/libdep/UART/uart.c ****     uart->huart = huart;
+  83              		.loc 1 9 5 view .LVU14
+  84              		.loc 1 9 17 is_stmt 0 view .LVU15
+  85 0030 2560     		str	r5, [r4]
+  10:Core/libdep/UART/uart.c ****     uart->huart->Instance = Instance;
+  86              		.loc 1 10 5 is_stmt 1 view .LVU16
+  87              		.loc 1 10 27 is_stmt 0 view .LVU17
+  88 0032 089B     		ldr	r3, [sp, #32]
+  89 0034 2B60     		str	r3, [r5]
+  11:Core/libdep/UART/uart.c ****     uart->huart->Init.BaudRate = baudrate;
+  90              		.loc 1 11 5 is_stmt 1 view .LVU18
+  91              		.loc 1 11 9 is_stmt 0 view .LVU19
+  92 0036 2368     		ldr	r3, [r4]
+  93              		.loc 1 11 32 view .LVU20
+  94 0038 5F60     		str	r7, [r3, #4]
+  12:Core/libdep/UART/uart.c ****     uart->huart->Init.WordLength = UART_WORDLENGTH_8B;
+  95              		.loc 1 12 5 is_stmt 1 view .LVU21
+  96              		.loc 1 12 9 is_stmt 0 view .LVU22
+  97 003a 2268     		ldr	r2, [r4]
+  98              		.loc 1 12 34 view .LVU23
+  99 003c 0023     		movs	r3, #0
+ 100 003e 9360     		str	r3, [r2, #8]
+  13:Core/libdep/UART/uart.c ****     uart->huart->Init.StopBits = UART_STOPBITS_1;
+ 101              		.loc 1 13 5 is_stmt 1 view .LVU24
+ 102              		.loc 1 13 9 is_stmt 0 view .LVU25
+ARM GAS  /var/folders/vs/j2g7j5tn4zl844ys43q9j5sm0000gn/T//ccOeWMqC.s 			page 3
+
+
+ 103 0040 2268     		ldr	r2, [r4]
+ 104              		.loc 1 13 32 view .LVU26
+ 105 0042 D360     		str	r3, [r2, #12]
+  14:Core/libdep/UART/uart.c ****     uart->huart->Init.Parity = UART_PARITY_NONE;
+ 106              		.loc 1 14 5 is_stmt 1 view .LVU27
+ 107              		.loc 1 14 9 is_stmt 0 view .LVU28
+ 108 0044 2268     		ldr	r2, [r4]
+ 109              		.loc 1 14 30 view .LVU29
+ 110 0046 1361     		str	r3, [r2, #16]
+  15:Core/libdep/UART/uart.c ****     uart->huart->Init.Mode = UART_MODE_TX_RX;
+ 111              		.loc 1 15 5 is_stmt 1 view .LVU30
+ 112              		.loc 1 15 9 is_stmt 0 view .LVU31
+ 113 0048 2268     		ldr	r2, [r4]
+ 114              		.loc 1 15 28 view .LVU32
+ 115 004a 0C21     		movs	r1, #12
+ 116 004c 5161     		str	r1, [r2, #20]
+  16:Core/libdep/UART/uart.c ****     uart->huart->Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 117              		.loc 1 16 5 is_stmt 1 view .LVU33
+ 118              		.loc 1 16 9 is_stmt 0 view .LVU34
+ 119 004e 2268     		ldr	r2, [r4]
+ 120              		.loc 1 16 33 view .LVU35
+ 121 0050 9361     		str	r3, [r2, #24]
+  17:Core/libdep/UART/uart.c ****     uart->huart->Init.OverSampling = UART_OVERSAMPLING_16;
+ 122              		.loc 1 17 5 is_stmt 1 view .LVU36
+ 123              		.loc 1 17 9 is_stmt 0 view .LVU37
+ 124 0052 2268     		ldr	r2, [r4]
+ 125              		.loc 1 17 36 view .LVU38
+ 126 0054 D361     		str	r3, [r2, #28]
+  18:Core/libdep/UART/uart.c ****     return (HAL_UART_Init(uart->huart) == HAL_OK);
+ 127              		.loc 1 18 5 is_stmt 1 view .LVU39
+ 128              		.loc 1 18 13 is_stmt 0 view .LVU40
+ 129 0056 2068     		ldr	r0, [r4]
+ 130 0058 FFF7FEFF 		bl	HAL_UART_Init
+ 131              	.LVL8:
+  19:Core/libdep/UART/uart.c **** }
+ 132              		.loc 1 19 1 view .LVU41
+ 133 005c B0FA80F0 		clz	r0, r0
+ 134 0060 4009     		lsrs	r0, r0, #5
+ 135 0062 03B0     		add	sp, sp, #12
+ 136              	.LCFI2:
+ 137              		.cfi_def_cfa_offset 20
+ 138              		@ sp needed
+ 139 0064 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 140              	.LVL9:
+ 141              	.L4:
+ 142              		.loc 1 19 1 view .LVU42
+ 143 0066 00BF     		.align	2
+ 144              	.L3:
+ 145 0068 00100240 		.word	1073876992
+ 146              		.cfi_endproc
+ 147              	.LFE65:
+ 149              		.section	.text.send,"ax",%progbits
+ 150              		.align	1
+ 151              		.global	send
+ 152              		.syntax unified
+ 153              		.thumb
+ 154              		.thumb_func
+ARM GAS  /var/folders/vs/j2g7j5tn4zl844ys43q9j5sm0000gn/T//ccOeWMqC.s 			page 4
+
+
+ 156              	send:
+ 157              	.LVL10:
+ 158              	.LFB66:
+  20:Core/libdep/UART/uart.c **** 
+  21:Core/libdep/UART/uart.c **** uint8_t send(uart_t *uart, char* data) {
+ 159              		.loc 1 21 40 is_stmt 1 view -0
+ 160              		.cfi_startproc
+ 161              		@ args = 0, pretend = 0, frame = 0
+ 162              		@ frame_needed = 0, uses_anonymous_args = 0
+ 163              		.loc 1 21 40 is_stmt 0 view .LVU44
+ 164 0000 38B5     		push	{r3, r4, r5, lr}
+ 165              	.LCFI3:
+ 166              		.cfi_def_cfa_offset 16
+ 167              		.cfi_offset 3, -16
+ 168              		.cfi_offset 4, -12
+ 169              		.cfi_offset 5, -8
+ 170              		.cfi_offset 14, -4
+ 171 0002 0546     		mov	r5, r0
+ 172 0004 0C46     		mov	r4, r1
+  22:Core/libdep/UART/uart.c ****     return HAL_UART_Transmit_DMA(uart->huart, (uint8_t*)data, strlen(data)) == HAL_OK;
+ 173              		.loc 1 22 5 is_stmt 1 view .LVU45
+ 174              		.loc 1 22 63 is_stmt 0 view .LVU46
+ 175 0006 0846     		mov	r0, r1
+ 176              	.LVL11:
+ 177              		.loc 1 22 63 view .LVU47
+ 178 0008 FFF7FEFF 		bl	strlen
+ 179              	.LVL12:
+ 180              		.loc 1 22 12 view .LVU48
+ 181 000c 82B2     		uxth	r2, r0
+ 182 000e 2146     		mov	r1, r4
+ 183 0010 2868     		ldr	r0, [r5]
+ 184 0012 FFF7FEFF 		bl	HAL_UART_Transmit_DMA
+ 185              	.LVL13:
+  23:Core/libdep/UART/uart.c **** }
+ 186              		.loc 1 23 1 view .LVU49
+ 187 0016 B0FA80F0 		clz	r0, r0
+ 188 001a 4009     		lsrs	r0, r0, #5
+ 189 001c 38BD     		pop	{r3, r4, r5, pc}
+ 190              		.loc 1 23 1 view .LVU50
+ 191              		.cfi_endproc
+ 192              	.LFE66:
+ 194              		.text
+ 195              	.Letext0:
+ 196              		.file 2 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 197              		.file 3 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/machine/_default_ty
+ 198              		.file 4 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/sys/_stdint.h"
+ 199              		.file 5 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/lib/gcc/arm-none-eabi/12.3.1/include/stdd
+ 200              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 201              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 202              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h"
+ 203              		.file 9 "Core/libdep/UART/uart.h"
+ 204              		.file 10 "/opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/arm-none-eabi/include/string.h"
+ 205              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h"
+ARM GAS  /var/folders/vs/j2g7j5tn4zl844ys43q9j5sm0000gn/T//ccOeWMqC.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 uart.c
+/var/folders/vs/j2g7j5tn4zl844ys43q9j5sm0000gn/T//ccOeWMqC.s:19     .text.init:00000000 $t
+/var/folders/vs/j2g7j5tn4zl844ys43q9j5sm0000gn/T//ccOeWMqC.s:25     .text.init:00000000 init
+/var/folders/vs/j2g7j5tn4zl844ys43q9j5sm0000gn/T//ccOeWMqC.s:145    .text.init:00000068 $d
+/var/folders/vs/j2g7j5tn4zl844ys43q9j5sm0000gn/T//ccOeWMqC.s:150    .text.send:00000000 $t
+/var/folders/vs/j2g7j5tn4zl844ys43q9j5sm0000gn/T//ccOeWMqC.s:156    .text.send:00000000 send
+
+UNDEFINED SYMBOLS
+HAL_NVIC_SetPriority
+HAL_NVIC_EnableIRQ
+HAL_UART_Init
+strlen
+HAL_UART_Transmit_DMA
