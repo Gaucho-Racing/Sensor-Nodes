@@ -19,7 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "../libdep/UART/uart.h"
-
+#include "../libdep/CAN/can.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -42,7 +42,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 CAN_HandleTypeDef hcan;
-
+CAN_FilterTypeDef sFilterConfig;
 I2C_HandleTypeDef hi2c1;
 
 SPI_HandleTypeDef hspi2;
@@ -57,7 +57,6 @@ DMA_HandleTypeDef hdma_usart2_tx;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_CAN_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_SPI2_Init(void);
 /* USER CODE BEGIN PFP */
@@ -98,7 +97,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_CAN_Init();
+  //MX_CAN_Init();
   MX_I2C1_Init();
   MX_SPI2_Init();
   //basic abstraction for uart
@@ -106,6 +105,15 @@ int main(void)
   if(!init(&uart, &huart2, DMA1_Channel7_IRQn, 115200, USART2)) {
     Error_Handler();
   }
+  can_t can;
+  if(!can_init(&can, &hcan, &sFilterConfig)) {
+    Error_Handler();
+  }
+
+  if(!can_start(&can)) {
+    Error_Handler();
+  }
+
   send(&uart, "Hello, World!\r\n");
   /* USER CODE BEGIN 2 */
 
@@ -117,7 +125,6 @@ int main(void)
   {
     /* USER CODE END WHILE */
     send(&uart, "Hello, World!\r\n");
-    HAL_UART_Transmit(&huart2, (uint8_t*)"Hehho, World!\r\n", 15, 1000); 
     HAL_Delay(1000); 
     HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_15);
     /* USER CODE BEGIN 3 */
@@ -162,43 +169,6 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-}
-
-/**
-  * @brief CAN Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_CAN_Init(void)
-{
-
-  /* USER CODE BEGIN CAN_Init 0 */
-
-  /* USER CODE END CAN_Init 0 */
-
-  /* USER CODE BEGIN CAN_Init 1 */
-
-  /* USER CODE END CAN_Init 1 */
-  hcan.Instance = CAN1;
-  hcan.Init.Prescaler = 2;
-  hcan.Init.Mode = CAN_MODE_NORMAL;
-  hcan.Init.SyncJumpWidth = CAN_SJW_1TQ;
-  hcan.Init.TimeSeg1 = CAN_BS1_13TQ;
-  hcan.Init.TimeSeg2 = CAN_BS2_2TQ;
-  hcan.Init.TimeTriggeredMode = DISABLE;
-  hcan.Init.AutoBusOff = DISABLE;
-  hcan.Init.AutoWakeUp = DISABLE;
-  hcan.Init.AutoRetransmission = DISABLE;
-  hcan.Init.ReceiveFifoLocked = DISABLE;
-  hcan.Init.TransmitFifoPriority = DISABLE;
-  if (HAL_CAN_Init(&hcan) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN CAN_Init 2 */
-
-  /* USER CODE END CAN_Init 2 */
-
 }
 
 /**

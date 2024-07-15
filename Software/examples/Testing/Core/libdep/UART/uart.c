@@ -21,4 +21,3 @@ uint8_t init(uart_t *uart, UART_HandleTypeDef *huart, IRQn_Type DMA_type, uint32
 uint8_t send(uart_t *uart, char* data) {
     return HAL_UART_Transmit_DMA(uart->huart, (uint8_t*)data, strlen(data)) == HAL_OK;
 }
-

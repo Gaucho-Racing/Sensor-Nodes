@@ -61,6 +61,7 @@ Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c \
 Core/libdep/UART/uart.c \
+Core/libdep/CAN/can.c \
 
 
 # ASM sources
