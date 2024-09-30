@@ -3253,6 +3253,10 @@
 		(uuid "1cfbfeac-fa56-471b-9fc9-c643ac26b2fb")
 	)
 	(no_connect
+		(at 116.84 66.04)
+		(uuid "2035d099-8377-4dda-a694-e1afb396a848")
+	)
+	(no_connect
 		(at 116.84 50.8)
 		(uuid "214ce023-a2ad-44ed-a0ce-a3d562b9df6c")
 	)
@@ -4412,28 +4416,6 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "T_SWO"
-		(shape input)
-		(at 116.84 66.04 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "4236e52c-8b20-4a36-bc2f-368bb3dfaded")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 125.0976 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 				(hide yes)
 			)
 		)
@@ -7749,7 +7731,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
+		(property "Value" "+3.3V"
 			(at 137.541 55.2958 0)
 			(effects
 				(font
