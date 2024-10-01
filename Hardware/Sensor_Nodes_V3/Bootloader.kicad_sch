@@ -3121,12 +3121,6 @@
 		(uuid "03aa96d6-4c7c-4c7b-9146-6d5a50940172")
 	)
 	(junction
-		(at 137.16 59.69)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "06488cb6-d0ee-4f83-8ca7-a3a12774355e")
-	)
-	(junction
 		(at 240.03 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5518,7 +5512,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C1554"
+		(property "LCSC" "C1648"
 			(at 54.61 66.04 0)
 			(effects
 				(font
@@ -5586,6 +5580,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 209.55 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25905"
 			(at 209.55 143.51 0)
 			(effects
 				(font
@@ -5795,6 +5798,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C8734"
+			(at 99.06 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "37"
 			(uuid "ff501371-c30f-4d80-8e22-fabfd5aa12c1")
 		)
@@ -5992,6 +6004,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 209.55 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25905"
 			(at 209.55 151.13 0)
 			(effects
 				(font
@@ -6671,7 +6692,7 @@
 				)
 			)
 		)
-		(property "Value" "100R"
+		(property "Value" "100"
 			(at 266.7 123.19 90)
 			(effects
 				(font
@@ -6790,72 +6811,6 @@
 			(project "gr25_nodes"
 				(path "/7b4e8e38-4440-451f-8c12-a5c49d6e3525/ef5be6a6-6fd2-4813-9489-058ffa5a3841"
 					(reference "#PWR022")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:PWR_FLAG")
-		(at 137.16 59.69 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "76ea1a08-1f49-4b1c-887f-8b335ee92646")
-		(property "Reference" "#FLG05"
-			(at 137.16 61.595 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 137.16 64.77 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 137.16 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 137.16 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 137.16 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4cc68e04-ce74-42b6-ad09-e9bc49dd4669")
-		)
-		(instances
-			(project ""
-				(path "/7b4e8e38-4440-451f-8c12-a5c49d6e3525/ef5be6a6-6fd2-4813-9489-058ffa5a3841"
-					(reference "#FLG05")
 					(unit 1)
 				)
 			)
@@ -7105,6 +7060,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 34.29 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25741"
 			(at 34.29 50.8 0)
 			(effects
 				(font
@@ -7611,7 +7575,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C1525"
+		(property "LCSC" "C14663"
 			(at 233.68 43.18 0)
 			(effects
 				(font
@@ -8052,7 +8016,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C1525"
+		(property "LCSC" "C19666"
 			(at 259.08 43.18 0)
 			(effects
 				(font
@@ -8274,7 +8238,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C1525"
+		(property "LCSC" "C14663"
 			(at 227.33 43.18 0)
 			(effects
 				(font
@@ -8428,7 +8392,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C1525"
+		(property "LCSC" "C14663"
 			(at 240.03 43.18 0)
 			(effects
 				(font
@@ -8506,7 +8470,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C1554"
+		(property "LCSC" "C1648"
 			(at 41.91 66.04 0)
 			(effects
 				(font
@@ -8859,7 +8823,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C1525"
+		(property "LCSC" "C14663"
 			(at 246.38 43.18 0)
 			(effects
 				(font

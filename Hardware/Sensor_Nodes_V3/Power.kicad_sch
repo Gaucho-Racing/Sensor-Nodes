@@ -2304,7 +2304,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 22.5552 34.29 0)
 			(effects
 				(font
@@ -2323,6 +2323,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 21.59 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" " C15850"
 			(at 21.59 30.48 0)
 			(effects
 				(font
@@ -2392,6 +2401,15 @@
 			)
 		)
 		(property "Description" "3A Synchronous Step-Down Voltage Regulator, Adjustable Output Voltage, 4.5-17V Input Voltage, SOT-23-6"
+			(at 52.07 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C97253"
 			(at 52.07 26.67 0)
 			(effects
 				(font
@@ -2917,7 +2935,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 50.4952 71.12 0)
 			(effects
 				(font
@@ -2944,7 +2962,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C12891"
+		(property "LCSC" "C45783"
 			(at 49.53 67.31 0)
 			(effects
 				(font
@@ -3052,7 +3070,7 @@
 				)
 			)
 		)
-		(property "Value" "LED"
+		(property "Value" "RED"
 			(at 59.69 63.5 0)
 			(effects
 				(font
@@ -3427,7 +3445,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 106.3752 34.29 0)
 			(effects
 				(font
@@ -3446,6 +3464,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 105.41 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C45783"
 			(at 105.41 30.48 0)
 			(effects
 				(font
@@ -3524,6 +3551,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C14663"
+			(at 71.12 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "aad484e3-5ca0-40f9-8a69-41e6fec11dc0")
 		)
@@ -3592,6 +3628,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C5291878"
+			(at 74.93 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "f5169566-552e-4539-ad8f-1ba3e4c40504")
 		)
@@ -3635,7 +3680,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 25.0952 71.12 0)
 			(effects
 				(font
@@ -3662,7 +3707,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C96446"
+		(property "LCSC" " C15850"
 			(at 24.13 67.31 0)
 			(effects
 				(font
@@ -3741,7 +3786,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C22962"
+		(property "LCSC" "C25091"
 			(at 66.04 67.31 0)
 			(effects
 				(font
@@ -3820,6 +3865,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C25744"
+			(at 85.09 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3fd36cd4-093f-487c-b800-76f867732224")
 		)
@@ -3863,7 +3917,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 94.9452 34.29 0)
 			(effects
 				(font
@@ -3882,6 +3936,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 93.98 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C45783"
 			(at 93.98 30.48 0)
 			(effects
 				(font
@@ -3933,7 +3996,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 36.5252 34.29 0)
 			(effects
 				(font
@@ -3952,6 +4015,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 35.56 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" " C15850"
 			(at 35.56 30.48 0)
 			(effects
 				(font
@@ -4021,6 +4093,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 85.09 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25796"
 			(at 85.09 27.94 0)
 			(effects
 				(font
