@@ -7565,28 +7565,6 @@
 			)
 		)
 	)
-	(global_label "PC3"
-		(shape input)
-		(at 132.08 147.32 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "03df3639-811d-4d4d-9830-90d2aac6e502")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 125.3453 147.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "PC5"
 		(shape input)
 		(at 26.67 67.31 180)
@@ -9061,28 +9039,6 @@
 			)
 		)
 	)
-	(global_label "HBEAT"
-		(shape input)
-		(at 73.66 69.85 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "a2928a10-9a6a-4722-9455-6678aff5c4c6")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 82.4509 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "T_CLK"
 		(shape input)
 		(at 73.66 67.31 0)
@@ -9259,28 +9215,6 @@
 			)
 		)
 	)
-	(global_label "PF1"
-		(shape input)
-		(at 26.67 44.45 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "b5046765-b89b-4129-a37c-ac61fcf30fdd")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 20.1167 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "PA10"
 		(shape input)
 		(at 132.08 129.54 180)
@@ -9294,6 +9228,28 @@
 		(uuid "ba517644-ad63-4966-bc7d-d4d16b2325ec")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 124.3172 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PA15"
+		(shape input)
+		(at 132.08 147.32 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "bc0a2911-dcca-4c56-8da8-0baa7041defd")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 124.3172 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9633,6 +9589,28 @@
 			)
 		)
 	)
+	(global_label "PC3"
+		(shape input)
+		(at 132.08 149.86 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "e901ef20-8354-464c-a15b-359d5e191a33")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 125.3453 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "PB1"
 		(shape input)
 		(at 95.25 152.4 180)
@@ -9646,6 +9624,28 @@
 		(uuid "e9590af6-62ff-471e-ba58-c81d1b62f61d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 88.5153 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "HBEAT"
+		(shape input)
+		(at 26.67 44.45 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "ea573122-756e-4c95-a9a2-573ba4846e5f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 17.8791 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9673,28 +9673,6 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "PF1"
-		(shape input)
-		(at 132.08 149.86 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "ee0492a0-e94f-4336-8555-dd2d6c4865d3")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 125.5267 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
 				(hide yes)
 			)
 		)
@@ -9871,6 +9849,28 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PA15"
+		(shape input)
+		(at 73.66 69.85 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "faa00067-03bb-45fc-8133-2c1d2d1ea7be")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 81.4228 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 				(hide yes)
 			)
 		)
