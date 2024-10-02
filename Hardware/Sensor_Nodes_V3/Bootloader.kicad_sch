@@ -3133,6 +3133,12 @@
 		(uuid "22cecce5-2e95-4336-8674-eabeb20ba98a")
 	)
 	(junction
+		(at 128.27 66.04)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2ca24362-8f92-4f6a-917b-f92bc61bf2ef")
+	)
+	(junction
 		(at 246.38 38.1)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3199,6 +3205,12 @@
 		(uuid "a461af24-d59e-45f2-bc82-5b34b74c0eb6")
 	)
 	(junction
+		(at 71.12 104.14)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a6dc777c-e16e-4541-8309-6ee829c8ba3d")
+	)
+	(junction
 		(at 255.27 124.46)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3234,6 +3246,12 @@
 		(color 0 0 0 0)
 		(uuid "cf95a44a-d572-46ba-bc02-26e7e92b64ae")
 	)
+	(junction
+		(at 67.31 101.6)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ea9e37d0-2bfe-4c55-8c1b-9d1a0eddf650")
+	)
 	(no_connect
 		(at 83.82 73.66)
 		(uuid "02c5c326-5aaf-4075-b928-58016371ac4c")
@@ -3245,10 +3263,6 @@
 	(no_connect
 		(at 83.82 63.5)
 		(uuid "1cfbfeac-fa56-471b-9fc9-c643ac26b2fb")
-	)
-	(no_connect
-		(at 116.84 66.04)
-		(uuid "2035d099-8377-4dda-a694-e1afb396a848")
 	)
 	(no_connect
 		(at 116.84 50.8)
@@ -3353,6 +3367,16 @@
 			(type default)
 		)
 		(uuid "0a9250a2-750d-42e3-87ba-4796f4a141c2")
+	)
+	(wire
+		(pts
+			(xy 128.27 66.04) (xy 116.84 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0e42cc32-11e2-41d4-a431-9b1ab9240d5f")
 	)
 	(wire
 		(pts
@@ -3466,6 +3490,16 @@
 	)
 	(wire
 		(pts
+			(xy 67.31 101.6) (xy 66.04 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "31feaecd-7347-445a-b609-2a827a6c4e79")
+	)
+	(wire
+		(pts
 			(xy 240.03 48.26) (xy 233.68 48.26)
 		)
 		(stroke
@@ -3546,6 +3580,16 @@
 	)
 	(wire
 		(pts
+			(xy 130.81 66.04) (xy 128.27 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3fc20457-bdde-4086-9f82-407ff2604aeb")
+	)
+	(wire
+		(pts
 			(xy 245.11 129.54) (xy 245.11 132.08)
 		)
 		(stroke
@@ -3573,6 +3617,16 @@
 			(type default)
 		)
 		(uuid "44d26936-3389-49be-abc9-bad071dbe4b9")
+	)
+	(wire
+		(pts
+			(xy 71.12 104.14) (xy 68.58 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "46998402-af27-4a5e-9301-18a382fdc005")
 	)
 	(wire
 		(pts
@@ -4016,7 +4070,7 @@
 	)
 	(wire
 		(pts
-			(xy 83.82 104.14) (xy 68.58 104.14)
+			(xy 83.82 104.14) (xy 71.12 104.14)
 		)
 		(stroke
 			(width 0)
@@ -4296,7 +4350,7 @@
 	)
 	(wire
 		(pts
-			(xy 83.82 101.6) (xy 66.04 101.6)
+			(xy 83.82 101.6) (xy 67.31 101.6)
 		)
 		(stroke
 			(width 0)
@@ -4431,6 +4485,28 @@
 		(uuid "1b897c54-4c1d-4274-9012-fe55db0c1c01")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 123.5857 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "T_SWO"
+		(shape input)
+		(at 130.81 66.04 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2b90964c-6bd6-4ca3-b1b2-8c4fb7d0e3a3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 139.7218 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6088,6 +6164,72 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 128.27 66.04 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "46b510fb-3fa7-4df3-a6b0-a79a17f4c8e4")
+		(property "Reference" "T8"
+			(at 127 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "~"
+			(at 129.7432 65.3542 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_1.0x1.0mm"
+			(at 133.35 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 133.35 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 128.27 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "75175ea9-7c5d-425d-9553-dfc941d60dd6")
+		)
+		(instances
+			(project "gr25_nodes"
+				(path "/7b4e8e38-4440-451f-8c12-a5c49d6e3525/ef5be6a6-6fd2-4813-9489-058ffa5a3841"
+					(reference "T8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 41.91 72.39 0)
 		(unit 1)
@@ -7362,6 +7504,72 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 71.12 104.14 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "af2a9aaf-9f04-4592-8085-fe343e99863c")
+		(property "Reference" "T6"
+			(at 72.39 109.728 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "~"
+			(at 69.6468 104.8258 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_1.0x1.0mm"
+			(at 66.04 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 66.04 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 71.12 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "76acac3b-37c2-485b-81e7-49a914ec4d00")
+		)
+		(instances
+			(project "gr25_nodes"
+				(path "/7b4e8e38-4440-451f-8c12-a5c49d6e3525/ef5be6a6-6fd2-4813-9489-058ffa5a3841"
+					(reference "T6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 66.04 66.04 180)
 		(unit 1)
@@ -7584,6 +7792,72 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 67.31 101.6 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b8f321a6-aebb-4358-a0a1-e96844408229")
+		(property "Reference" "T7"
+			(at 66.04 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "~"
+			(at 68.7832 100.9142 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_1.0x1.0mm"
+			(at 72.39 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 72.39 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 67.31 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "99ae9565-8f59-4845-a5fc-1fdb0da78ed3")
+		)
+		(instances
+			(project "gr25_nodes"
+				(path "/7b4e8e38-4440-451f-8c12-a5c49d6e3525/ef5be6a6-6fd2-4813-9489-058ffa5a3841"
+					(reference "T7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:LED")
 		(at 212.09 39.37 90)
 		(unit 1)
@@ -7637,7 +7911,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C72041"
+		(property "LCSC" " C2290"
 			(at 212.09 39.37 90)
 			(effects
 				(font
