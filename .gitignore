@@ -2,7 +2,8 @@
 # Mac Shit
 .DS_Store
 ~*
-#*
+\#*
+
 
 # Prerequisites
 *.d
