@@ -3601,7 +3601,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Inductor_SMD:L_Cenker_CKCS6045"
+		(property "Footprint" "Inductor_SMD:L_Cenker_CKCS6020"
 			(at 74.93 24.13 0)
 			(effects
 				(font

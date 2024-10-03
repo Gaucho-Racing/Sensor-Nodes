@@ -3273,10 +3273,6 @@
 		(uuid "282fb19b-71e1-4308-bc6a-dabcde95db4c")
 	)
 	(no_connect
-		(at 116.84 60.96)
-		(uuid "49ccd167-184a-44ec-bbff-8cf43a002b54")
-	)
-	(no_connect
 		(at 116.84 58.42)
 		(uuid "4f2c89bb-96fd-41c6-b78c-d533255bd6a4")
 	)
@@ -4687,6 +4683,28 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "MCO"
+		(shape input)
+		(at 116.84 60.96 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "9d7af553-0ed7-4102-8472-def766edcb07")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 123.8771 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 				(hide yes)
 			)
 		)
