@@ -42,6 +42,7 @@
       13,
       15,
       16,
+      17,
       18,
       19,
       20,
@@ -63,7 +64,7 @@
       39,
       40
     ],
-    "visible_layers": "00290aa_ffffffff",
+    "visible_layers": "fffffff_ffffffff",
     "zone_display_mode": 0
   },
   "git": {
@@ -73,7 +74,7 @@
     "ssh_key": ""
   },
   "meta": {
-    "filename": "gr25_nodes.kicad_prl",
+    "filename": "Strain Guages.kicad_prl",
     "version": 3
   },
   "project": {
