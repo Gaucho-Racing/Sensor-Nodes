@@ -179,7 +179,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/andrey/Desktop/balls/sensors/build/Debug"
+			"value" : "/Users/andrey/Desktop/GR/GR25/Software/STM32G4/sensors/build/Debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -503,7 +503,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/opt/homebrew/Cellar/cmake/3.30.5/bin/ccmake"
+			"value" : "/opt/homebrew/bin/ccmake"
 		},
 		{
 			"name" : "CMAKE_EXECUTABLE_FORMAT",
@@ -635,7 +635,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/andrey/Desktop/balls/sensors/build/Debug/CMakeFiles/pkgRedirects"
+			"value" : "/Users/andrey/Desktop/GR/GR25/Software/STM32G4/sensors/build/Debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -695,7 +695,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/andrey/Desktop/balls/sensors"
+			"value" : "/Users/andrey/Desktop/GR/GR25/Software/STM32G4/sensors"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1175,7 +1175,7 @@
 				}
 			],
 			"type" : "UNINITIALIZED",
-			"value" : "/Users/andrey/Desktop/balls/sensors/cmake/gcc-arm-none-eabi.cmake"
+			"value" : "/Users/andrey/Desktop/GR/GR25/Software/STM32G4/sensors/cmake/gcc-arm-none-eabi.cmake"
 		},
 		{
 			"name" : "CMAKE_UNAME",
@@ -1215,7 +1215,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/andrey/Desktop/balls/sensors/build/Debug"
+			"value" : "/Users/andrey/Desktop/GR/GR25/Software/STM32G4/sensors/build/Debug"
 		},
 		{
 			"name" : "sensors_IS_TOP_LEVEL",
@@ -1239,7 +1239,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/andrey/Desktop/balls/sensors"
+			"value" : "/Users/andrey/Desktop/GR/GR25/Software/STM32G4/sensors"
 		},
 		{
 			"name" : "stm32cubemx_BINARY_DIR",
@@ -1251,7 +1251,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/andrey/Desktop/balls/sensors/build/Debug/cmake/stm32cubemx"
+			"value" : "/Users/andrey/Desktop/GR/GR25/Software/STM32G4/sensors/build/Debug/cmake/stm32cubemx"
 		},
 		{
 			"name" : "stm32cubemx_IS_TOP_LEVEL",
@@ -1275,7 +1275,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/andrey/Desktop/balls/sensors/cmake/stm32cubemx"
+			"value" : "/Users/andrey/Desktop/GR/GR25/Software/STM32G4/sensors/cmake/stm32cubemx"
 		}
 	],
 	"kind" : "cache",

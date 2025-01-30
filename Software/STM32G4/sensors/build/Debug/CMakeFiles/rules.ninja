@@ -35,7 +35,7 @@ rule C_COMPILER__sensors_unscanned_Debug
 # Rule for linking C executable.
 
 rule C_EXECUTABLE_LINKER__sensors_Debug
-  command = $PRE_LINK && /opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/bin/arm-none-eabi-gcc $FLAGS -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -T "/Users/andrey/Desktop/balls/sensors/STM32G474RETx_FLASH.ld" --specs=nano.specs -Wl,-Map=sensors.map -Wl,--gc-sections -Wl,--start-group -lc -lm -Wl,--end-group -Wl,--print-memory-usage $LINK_FLAGS $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
+  command = $PRE_LINK && /opt/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/bin/arm-none-eabi-gcc $FLAGS -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -T "/Users/andrey/Desktop/GR/GR25/Software/STM32G4/sensors/STM32G474RETx_FLASH.ld" --specs=nano.specs -Wl,-Map=sensors.map -Wl,--gc-sections -Wl,--start-group -lc -lm -Wl,--end-group -Wl,--print-memory-usage $LINK_FLAGS $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
   description = Linking C executable $TARGET_FILE
   restat = $RESTAT
 
@@ -52,7 +52,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /opt/homebrew/bin/cmake --regenerate-during-build -S/Users/andrey/Desktop/balls/sensors -B/Users/andrey/Desktop/balls/sensors/build/Debug
+  command = /opt/homebrew/bin/cmake --regenerate-during-build -S/Users/andrey/Desktop/GR/GR25/Software/STM32G4/sensors -B/Users/andrey/Desktop/GR/GR25/Software/STM32G4/sensors/build/Debug
   description = Re-running CMake...
   generator = 1
 

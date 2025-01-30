@@ -66,7 +66,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "sensors::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-sensors-Debug-150daa3d2fe2e66b7481.json",
+					"jsonFile" : "target-sensors-Debug-bb19ace589b6468f78da.json",
 					"name" : "sensors",
 					"projectIndex" : 0
 				}
@@ -76,8 +76,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/andrey/Desktop/balls/sensors/build/Debug",
-		"source" : "/Users/andrey/Desktop/balls/sensors"
+		"build" : "/Users/andrey/Desktop/GR/GR25/Software/STM32G4/sensors/build/Debug",
+		"source" : "/Users/andrey/Desktop/GR/GR25/Software/STM32G4/sensors"
 	},
 	"version" : 
 	{

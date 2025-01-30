@@ -178,8 +178,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/Users/andrey/Desktop/balls/sensors/build/Debug",
-		"source" : "/Users/andrey/Desktop/balls/sensors"
+		"build" : "/Users/andrey/Desktop/GR/GR25/Software/STM32G4/sensors/build/Debug",
+		"source" : "/Users/andrey/Desktop/GR/GR25/Software/STM32G4/sensors"
 	},
 	"version" : 
 	{
