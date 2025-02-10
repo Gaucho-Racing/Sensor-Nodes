@@ -1,0 +1,26 @@
+{
+  "configurations": [
+    {
+      "name": "macos-clang-arm64",
+      "includePath": [
+        "${workspaceRoot}",
+        "${workspaceRoot}/Core/Inc",
+        "${workspaceRoot}/Drivers/STM32F1xx_HAL_Driver/Inc",
+        "${workspaceRoot}/Drivers/CMSIS/Include",
+        "${workspaceRoot}/Drivers/CMSIS/Device/ST/STM32F1xx/Include"
+      ],
+      "defines": [
+        "USE_HAL_DRIVER",
+        "STM32F103xB"
+      ],
+      "compilerPath": "/usr/bin/clang",
+      "cStandard": "${default}",
+      "cppStandard": "${default}",
+      "intelliSenseMode": "macos-clang-arm64",
+      "compilerArgs": [
+        ""
+      ]
+    }
+  ],
+  "version": 4
+}
