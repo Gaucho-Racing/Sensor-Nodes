@@ -58,11 +58,18 @@ PUTCHAR_PROTOTYPE
 
 /* USER CODE BEGIN PV */
 FDCAN_RxHeaderTypeDef RxHeader_FDCAN2;
+enum {
+  TRANSFER_WAIT,
+  TRANSFER_COMPLETE,
+  TRANSFER_ERROR
+};
+__IO uint32_t wTransferState = TRANSFER_COMPLETE;
+uint16_t TxData[8] = {0x1010, 0x3232, 0x5454, 0x7676, 0x9898, 0x0000, 0x1111, 0x2222};
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-static void MX_NVIC_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -94,7 +101,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+  
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -108,17 +115,18 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_FDCAN1_Init();
-  MX_FDCAN2_Init();
   MX_SPI1_Init();
-  MX_SPI3_Init();
   MX_CRC_Init();
-
-  /* Initialize interrupts */
-  MX_NVIC_Init();
+  MX_FDCAN2_Init();
   /* USER CODE BEGIN 2 */
-  
-  HAL_FDCAN_Start(&hfdcan1);
+
+  HAL_FDCAN_ActivateNotification(&hfdcan2, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
   HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
+  
+ 
+
+
+  
 
   
   // static uint16_t eeMLX90640[832];
@@ -155,7 +163,10 @@ int main(void)
 
 
 
-  uint8_t TxData[8] = {0x10, 0x32, 0x54, 0x76, 0x98, 0x00, 0x11, 0x22};
+  
+  uint8_t RxData[8];
+
+
   FDCAN_TxHeaderTypeDef TxHeader;
   TxHeader.Identifier = 0x3FF;
   TxHeader.IdType = FDCAN_STANDARD_ID;
@@ -167,13 +178,21 @@ int main(void)
   TxHeader.TxEventFifoControl = FDCAN_NO_TX_EVENTS;
   TxHeader.MessageMarker = 0;
 
+  HAL_FDCAN_Start(&hfdcan1);
+  HAL_FDCAN_Start(&hfdcan2);
+
   while (1)
   { 
-    HAL_Delay(1000);
-    HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_1);
+    // HAL_Delay(10);
+    // HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_1);
     // HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan1, &TxHeader, TxData);
     // HAL_SPI_Transmit_DMA(&hspi1, TxData, 8);
-    HAL_SPI_Transmit(&hspi1, TxData, 8, 1000);
+    if(wTransferState == TRANSFER_COMPLETE)
+    {
+      wTransferState = TRANSFER_WAIT;
+      // HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_1);
+      HAL_SPI_Transmit_DMA(&hspi1, (uint8_t *)TxData, 8);
+    }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -231,17 +250,6 @@ void SystemClock_Config(void)
   }
 }
 
-/**
-  * @brief NVIC Configuration.
-  * @retval None
-  */
-static void MX_NVIC_Init(void)
-{
-  /* FDCAN2_IT0_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(FDCAN2_IT0_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(FDCAN2_IT0_IRQn);
-}
-
 /* USER CODE BEGIN 4 */
 void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 {
@@ -251,6 +259,17 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
   //circularBufferPush(cb, RxData, sizeof(RxData));
 
 
+}
+
+void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
+{
+  // HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_1);
+  wTransferState = TRANSFER_COMPLETE;
+}
+
+void HAL_SPI_ErrorCallback(SPI_HandleTypeDef *hspi)
+{
+  wTransferState = TRANSFER_ERROR;
 }
 /* USER CODE END 4 */
 
