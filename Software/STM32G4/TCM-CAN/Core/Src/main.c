@@ -28,6 +28,7 @@
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
 #include <string.h>
+#include <circularBuffer.h>
 //#include "circularBuffer.h"
 /* USER CODE END Includes */
 
@@ -67,13 +68,23 @@ enum {
 __IO uint32_t wTransferState = TRANSFER_COMPLETE;
 uint16_t TxData[8] = {0x1010, 0x3232, 0x5454, 0x7676, 0x9898, 0x0000, 0x1111, 0x2222};
 struct CAN{
-  uint32_t ID;
-  uint8_t bus;
-  uint16_t length;
-  uint8_t data[64];
+  union{
+    uint16_t buffer[36];
+    struct{
+      uint32_t ID;
+      uint8_t bus;
+      uint16_t length;
+      uint8_t data[64];
+    }split;
+  }combined;
 };
 
+
 struct CAN buffer[64];
+
+CircularBuffer *cb = NULL;
+
+
 
 /* USER CODE END PV */
 
@@ -131,51 +142,10 @@ int main(void)
 
   HAL_FDCAN_ActivateNotification(&hfdcan2, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
   HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
-  
- 
-
 
   
-
-  
-  // static uint16_t eeMLX90640[832];
-  // static paramsMLX90640 mlx90640;
-  // #define MLX90640_ADDRESS 0x33<<1
-  // MLX90640_DumpEE(MLX90640_ADDRESS, eeMLX90640);
-  
-  // MLX90640_ExtractParameters(eeMLX90640, &mlx90640);
-  
-  // MLX90640_SetRefreshRate(MLX90640_ADDRESS, 0x05);
-
-  // MLX90640_SynchFrame(MLX90640_ADDRESS);
-  //  MLX90640_SetRefreshRate(0x33, 0x05);
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-
-  // unsigned char slaveAddress; 
-  // slaveAddress = 0x33<<1;
-  // static uint16_t eeMLX90640[832];  
-  // static uint16_t mlx90640Frame[834];  
-  // paramsMLX90640 mlx90640; 
-  // static float mlx90640Image[768]; 
-  // int status; 
-  // status = MLX90640_DumpEE (slaveAddress, eeMLX90640);   
-  // status = MLX90640_ExtractParameters(eeMLX90640, &mlx90640); 
-  // status = MLX90640_SetRefreshRate (slaveAddress, 0x05);
-  // // status = MLX90640_TriggerMeasurement (slaveAddress);
-  // status = MLX90640_GetFrameData (0x33, mlx90640Frame);   
-  // // status = MLX90640_GetFrameData (0x33, mlx90640Frame);   
-  // MLX90640_GetImage(mlx90640Frame, &mlx90640, mlx90640Image);
-  //uint16_t pressure = 0;
-
-
-
   
   uint8_t RxData[8];
-
-
   FDCAN_TxHeaderTypeDef TxHeader;
   TxHeader.Identifier = 0x3FF;
   TxHeader.IdType = FDCAN_STANDARD_ID;
@@ -187,9 +157,13 @@ int main(void)
   TxHeader.TxEventFifoControl = FDCAN_NO_TX_EVENTS;
   TxHeader.MessageMarker = 0;
 
-  buffer[0].ID = 0x3FF;
-  buffer[0].length = 8;
-  memcpy(buffer[0].data, TxData, 8);
+  buffer[0].combined.split.ID = 0x3FF;
+  buffer[0].combined.split.length = 8;
+  memcpy(buffer[0].combined.split.data, TxData, 2*8);
+
+  cb = circular_buffer_init(64, 72);
+  circularBufferPush(cb, buffer[0].combined.buffer, sizeof(buffer[0].combined.buffer));
+  memcpy(buffer[1].combined.buffer, circularBufferPop(cb), sizeof(buffer[1].combined.buffer));
 
   HAL_FDCAN_Start(&hfdcan1);
   HAL_FDCAN_Start(&hfdcan2);
@@ -203,8 +177,8 @@ int main(void)
     if(wTransferState == TRANSFER_COMPLETE)
     {
       wTransferState = TRANSFER_WAIT;
-      // HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_1);
-      HAL_SPI_Transmit_DMA(&hspi1, (uint8_t *)TxData, 8);
+      uint16_t *tmp = (uint16_t *)circularBufferPop(cb);
+      HAL_SPI_Transmit_DMA(&hspi1, (uint8_t *)tmp, sizeof(tmp));
     }
     /* USER CODE END WHILE */
 
@@ -266,12 +240,12 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 {
-  uint8_t RxData[64];
-  HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO0, &RxHeader_FDCAN2, RxData);
-  printf("got messgae\n");
-  //circularBufferPush(cb, RxData, sizeof(RxData));
-
-
+  struct CAN tmp;
+  HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO0, &RxHeader_FDCAN2, tmp.combined.split.data);
+  tmp.combined.split.ID = RxHeader_FDCAN2.Identifier;
+  tmp.combined.split.length = RxHeader_FDCAN2.DataLength;
+  tmp.combined.split.bus = hfdcan->Instance == FDCAN1 ? 1 : 2;
+  circularBufferPush(cb, tmp.combined.buffer, sizeof(tmp.combined.buffer));
 }
 
 void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)

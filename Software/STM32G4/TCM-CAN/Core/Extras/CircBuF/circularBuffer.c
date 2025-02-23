@@ -4,7 +4,10 @@ CircularBuffer *circular_buffer_init(size_t capacity, size_t max_array_size) {
     if (!cb) {
         return NULL;
     }
-
+    /*
+    Done to have this thing be u16 insteda of u32 to save some space
+    
+    */
     cb->buffer = malloc(capacity * sizeof(void *));
     if (!cb->buffer) {
         free(cb);
