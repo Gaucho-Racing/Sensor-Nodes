@@ -1973,12 +1973,14 @@ HAL_StatusTypeDef HAL_SPI_Transmit_DMA(SPI_HandleTypeDef *hspi, const uint8_t *p
   }
 
   /* Enable the Tx DMA Stream/Channel */
+
   if (HAL_OK != HAL_DMA_Start_IT(hspi->hdmatx, (uint32_t)hspi->pTxBuffPtr, (uint32_t)&hspi->Instance->DR,
                                  hspi->TxXferCount))
   {
     /* Update SPI error code */
     SET_BIT(hspi->ErrorCode, HAL_SPI_ERROR_DMA);
     /* Process Unlocked */
+
     __HAL_UNLOCK(hspi);
     return HAL_ERROR;
   }
@@ -1997,6 +1999,9 @@ HAL_StatusTypeDef HAL_SPI_Transmit_DMA(SPI_HandleTypeDef *hspi, const uint8_t *p
   __HAL_SPI_ENABLE_IT(hspi, (SPI_IT_ERR));
 
   /* Enable Tx DMA Request */
+  GPIOA->BSRR = (uint32_t)GPIO_PIN_4;
+
+
   SET_BIT(hspi->Instance->CR2, SPI_CR2_TXDMAEN);
 
   return HAL_OK;
