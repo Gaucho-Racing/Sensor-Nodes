@@ -27,6 +27,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
+#include <string.h>
 //#include "circularBuffer.h"
 /* USER CODE END Includes */
 
@@ -65,6 +66,14 @@ enum {
 };
 __IO uint32_t wTransferState = TRANSFER_COMPLETE;
 uint16_t TxData[8] = {0x1010, 0x3232, 0x5454, 0x7676, 0x9898, 0x0000, 0x1111, 0x2222};
+struct CAN{
+  uint32_t ID;
+  uint8_t bus;
+  uint16_t length;
+  uint8_t data[64];
+};
+
+struct CAN buffer[64];
 
 /* USER CODE END PV */
 
@@ -177,6 +186,10 @@ int main(void)
   TxHeader.FDFormat = FDCAN_CLASSIC_CAN;
   TxHeader.TxEventFifoControl = FDCAN_NO_TX_EVENTS;
   TxHeader.MessageMarker = 0;
+
+  buffer[0].ID = 0x3FF;
+  buffer[0].length = 8;
+  memcpy(buffer[0].data, TxData, 8);
 
   HAL_FDCAN_Start(&hfdcan1);
   HAL_FDCAN_Start(&hfdcan2);
