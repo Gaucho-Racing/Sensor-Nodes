@@ -18,17 +18,14 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "adc.h"
 #include "crc.h"
-#include "dma.h"
-#include "fdcan.h"
 #include "i2c.h"
-#include "spi.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
+#include "vl53l0x_api.h"
 //#include "circularBuffer.h"
 /* USER CODE END Includes */
 
@@ -59,12 +56,12 @@ PUTCHAR_PROTOTYPE
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-FDCAN_RxHeaderTypeDef RxHeader_FDCAN2;
+// FDCAN_RxHeaderTypeDef RxHeader_FDCAN2;
+VL53L0X_Dev_t dev = {.I2cHandle = &hi2c3, .I2cDevAddr = 0x52};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-static void MX_NVIC_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -108,23 +105,14 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_DMA_Init();
-  MX_FDCAN1_Init();
-  MX_FDCAN2_Init();
-  MX_I2C2_Init();
   MX_I2C3_Init();
-  MX_I2C4_Init();
-  MX_SPI1_Init();
-  MX_SPI3_Init();
-  MX_ADC1_Init();
   MX_CRC_Init();
-
-  /* Initialize interrupts */
-  MX_NVIC_Init();
   /* USER CODE BEGIN 2 */
   
-  HAL_FDCAN_Start(&hfdcan1);
-  HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
+  // HAL_FDCAN_Start(&hfdcan1);
+  // HAL_FDCAN_Start(&hfdcan2);
+  // HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
+  // HAL_FDCAN_ActivateNotification(&hfdcan2, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
 
   
   // static uint16_t eeMLX90640[832];
@@ -158,26 +146,43 @@ int main(void)
   // // status = MLX90640_GetFrameData (0x33, mlx90640Frame);   
   // MLX90640_GetImage(mlx90640Frame, &mlx90640, mlx90640Image);
   //uint16_t pressure = 0;
-
+  VL53L0X_WaitDeviceBooted(&dev);
+  VL53L0X_DataInit(&dev);
+  VL53L0X_DeviceParameters_t  params = {0};
+  VL53L0X_GetDeviceParameters(&dev, &params);
+  params.DeviceMode = VL53L0X_DEVICEMODE_CONTINUOUS_RANGING;
+  VL53L0X_SetDeviceParameters(&dev, &params);
+  VL53L0X_GetDeviceParameters(&dev, &params);
+  VL53L0X_GetMeasurementTimingBudgetMicroSeconds(&dev, &params.MeasurementTimingBudgetMicroSeconds);
+  int status = VL53L0X_SetMeasurementTimingBudgetMicroSeconds(&dev, 25000);
+  // VL53L0X_PerformSingleMeasurement(&dev);
+  VL53L0X_StartMeasurement(&dev);
+  VL53L0X_ClearInterruptMask(&dev, 0);
+  VL53L0X_RangingMeasurementData_t measure = {0};
 
 
   uint8_t TxData[8] = {0x10, 0x32, 0x54, 0x76, 0x98, 0x00, 0x11, 0x22};
-  FDCAN_TxHeaderTypeDef TxHeader;
-  TxHeader.Identifier = 0x3FF;
-  TxHeader.IdType = FDCAN_STANDARD_ID;
-  TxHeader.TxFrameType = FDCAN_DATA_FRAME;
-  TxHeader.DataLength = FDCAN_DLC_BYTES_8;
-  TxHeader.ErrorStateIndicator = FDCAN_ESI_ACTIVE;
-  TxHeader.BitRateSwitch = FDCAN_BRS_OFF;
-  TxHeader.FDFormat = FDCAN_CLASSIC_CAN;
-  TxHeader.TxEventFifoControl = FDCAN_NO_TX_EVENTS;
-  TxHeader.MessageMarker = 0;
+  // FDCAN_TxHeaderTypeDef TxHeader;
+  // TxHeader.Identifier = 0x3FF;
+  // TxHeader.IdType = FDCAN_STANDARD_ID;
+  // TxHeader.TxFrameType = FDCAN_DATA_FRAME;
+  // TxHeader.DataLength = FDCAN_DLC_BYTES_8;
+  // TxHeader.ErrorStateIndicator = FDCAN_ESI_ACTIVE;
+  // TxHeader.BitRateSwitch = FDCAN_BRS_OFF;
+  // TxHeader.FDFormat = FDCAN_CLASSIC_CAN;
+  // TxHeader.TxEventFifoControl = FDCAN_NO_TX_EVENTS;
+  // TxHeader.MessageMarker = 0;
 
   while (1)
   { 
-    HAL_Delay(1000);
+    int status;
+    VL53L0X_GetMeasurementDataReady(&dev, &status);
+    VL53L0X_GetRangingMeasurementData(&dev, &measure);
+    printf("Distance: %d\n", measure.RangeMilliMeter);
+    VL53L0X_ClearInterruptMask(&dev, 0);
     HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_1);
-    HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan1, &TxHeader, TxData);
+    // HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan1, &TxHeader, TxData);
+    // HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan2, &TxHeader, TxData);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -235,27 +240,16 @@ void SystemClock_Config(void)
   }
 }
 
-/**
-  * @brief NVIC Configuration.
-  * @retval None
-  */
-static void MX_NVIC_Init(void)
-{
-  /* FDCAN2_IT0_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(FDCAN2_IT0_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(FDCAN2_IT0_IRQn);
-}
-
 /* USER CODE BEGIN 4 */
-void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
-{
-  uint8_t RxData[64];
-  HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO0, &RxHeader_FDCAN2, RxData);
-  printf("got messgae\n");
-  //circularBufferPush(cb, RxData, sizeof(RxData));
+// void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
+// {
+//   uint8_t RxData[64];
+//   HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO0, &RxHeader_FDCAN2, RxData);
+//   printf("got messgae\n");
+//   //circularBufferPush(cb, RxData, sizeof(RxData));
 
 
-}
+// }
 /* USER CODE END 4 */
 
 /**

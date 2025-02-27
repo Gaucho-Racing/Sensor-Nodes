@@ -115,7 +115,7 @@ int main(void)
 
   /* USER CODE BEGIN Init */
 
-  uint8_t RxData[8];
+  uint16_t RxData[36];
   FDCAN_TxHeaderTypeDef TxHeader;
   TxHeader.Identifier = 0x3FF;
   TxHeader.IdType = FDCAN_STANDARD_ID;
@@ -145,6 +145,8 @@ int main(void)
   MX_FDCAN2_Init();
   /* USER CODE BEGIN 2 */
   cb = circular_buffer_init(64, 72);
+  GPIOA->BSRR = (uint32_t)GPIO_PIN_4;
+
 
 
   HAL_FDCAN_ActivateNotification(&hfdcan2, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
@@ -154,17 +156,19 @@ int main(void)
   /* USER CODE END 2 */
 
   /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
   while (1)
   {
-  /* USER CODE BEGIN WHILE */
     
     if(wTransferState == TRANSFER_COMPLETE)
     {
       uint16_t *tmp2 = circularBufferPop(cb);
       if(tmp2 != NULL){
         wTransferState = TRANSFER_WAIT;
-        HAL_SPI_Transmit_DMA(&hspi1, (uint8_t *)tmp2, 4 + tmp2[3]);
+        
+        HAL_SPI_TransmitReceive_DMA(&hspi1, (uint8_t *)tmp2, (uint8_t *)RxData, 36);
         GPIOA->BRR = (uint32_t)GPIO_PIN_4;
+
       }
     }
     /* USER CODE END WHILE */
@@ -235,10 +239,9 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
   circularBufferPush(cb, tmp.combined.buffer, sizeof(tmp.combined.buffer));
 }
 
-void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
+void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
 {
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
-
+  GPIOA->BSRR = (uint32_t)GPIO_PIN_4;
   wTransferState = TRANSFER_COMPLETE;
 }
 

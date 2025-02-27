@@ -19,17 +19,18 @@ target_include_directories(stm32cubemx INTERFACE
     ../../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy
     ../../Drivers/CMSIS/Device/ST/STM32G4xx/Include
     ../../Drivers/CMSIS/Include
+    ../../Core/Extras/vl53l0x
 )
 
 target_sources(stm32cubemx INTERFACE
     ../../Core/Src/main.c
     ../../Core/Src/gpio.c
-    ../../Core/Src/adc.c
+    # ../../Core/Src/adc.c
     ../../Core/Src/crc.c
-    ../../Core/Src/dma.c
-    ../../Core/Src/fdcan.c
+    # ../../Core/Src/dma.c
+    # ../../Core/Src/fdcan.c
     ../../Core/Src/i2c.c
-    ../../Core/Src/spi.c
+    # ../../Core/Src/spi.c
     ../../Core/Src/stm32g4xx_it.c
     ../../Core/Src/stm32g4xx_hal_msp.c
     ../../Core/Src/stm32g4xx_hal_timebase_tim.c
@@ -65,6 +66,13 @@ target_sources(stm32cubemx INTERFACE
     ../../Core/Src/sysmem.c
     ../../Core/Src/syscalls.c
     ../../startup_stm32g474xx.s
+    ../../Core/Extras/vl53l0x/vl53l0x_api_calibration.c
+    ../../Core/Extras/vl53l0x/vl53l0x_api_core.c
+    ../../Core/Extras/vl53l0x/vl53l0x_api_ranging.c
+    ../../Core/Extras/vl53l0x/vl53l0x_api_strings.c
+    ../../Core/Extras/vl53l0x/vl53l0x_api.c
+    ../../Core/Extras/vl53l0x/vl53l0x_platform.c
+    ../../Core/Extras/vl53l0x/vl53l0x_platform_log.c
 )
 
 target_link_directories(stm32cubemx INTERFACE

@@ -6,7 +6,10 @@
         "fdcan.h": "c",
         "sm7000.h": "c",
         "mlx90640_i2c_driver.h": "c",
-        "circularbuffer.h": "c"
+        "circularbuffer.h": "c",
+        "math.h": "c",
+        "gpio.h": "c",
+        "cmath": "c"
     },
     "cortex-debug.variableUseNaturalFormat": false
 }
