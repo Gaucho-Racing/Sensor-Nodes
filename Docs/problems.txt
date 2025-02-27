@@ -1,4 +1,0 @@
-I have problems
-
-Hardware:
-	5V and 12V silkscreen are swapped
