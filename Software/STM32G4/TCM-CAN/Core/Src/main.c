@@ -68,11 +68,11 @@ enum {
 __IO uint32_t wTransferState = TRANSFER_COMPLETE;
 struct CAN{
   union{
-    uint16_t buffer[36];
+    uint16_t buffer[35];
     struct{
       uint32_t ID;
       uint8_t bus;
-      uint16_t length;
+      uint8_t length;
       uint8_t data[64];
     }split;
   }combined;
@@ -162,11 +162,13 @@ int main(void)
     
     if(wTransferState == TRANSFER_COMPLETE)
     {
-      uint16_t *tmp2 = circularBufferPop(cb);
+      struct CAN *tmp2 = circularBufferPop(cb);
       if(tmp2 != NULL){
+        uint8_t temp = 0;
         wTransferState = TRANSFER_WAIT;
-        
-        HAL_SPI_TransmitReceive_DMA(&hspi1, (uint8_t *)tmp2, (uint8_t *)RxData, 36);
+        uint8_t length = tmp2->combined.split.length;
+        temp = (length >> 1) + (length % 2) + 3;
+        HAL_SPI_TransmitReceive_DMA(&hspi1, (uint8_t *)tmp2, (uint8_t *)RxData, temp);
         GPIOA->BRR = (uint32_t)GPIO_PIN_4;
 
       }
