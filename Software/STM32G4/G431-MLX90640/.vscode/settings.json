@@ -1,0 +1,6 @@
+{
+    "cmake.useCMakePresets": "always",
+    "files.associations": {
+        "mlx90640_api.h": "c"
+    },
+}
