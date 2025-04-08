@@ -159,6 +159,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    printf("Wrong parameters value: file %s on line %d\r\n");
     
     if(wTransferState == TRANSFER_COMPLETE)
     {
@@ -192,14 +193,14 @@ void SystemClock_Config(void)
   {
   }
   LL_PWR_EnableRange1BoostMode();
-  LL_RCC_HSE_EnableBypass();
-  LL_RCC_HSE_Enable();
-   /* Wait till HSE is ready */
-  while(LL_RCC_HSE_IsReady() != 1)
+  LL_RCC_HSI_Enable();
+   /* Wait till HSI is ready */
+  while(LL_RCC_HSI_IsReady() != 1)
   {
   }
 
-  LL_RCC_PLL_ConfigDomain_SYS(LL_RCC_PLLSOURCE_HSE, LL_RCC_PLLM_DIV_1, 40, LL_RCC_PLLR_DIV_2);
+  LL_RCC_HSI_SetCalibTrimming(64);
+  LL_RCC_PLL_ConfigDomain_SYS(LL_RCC_PLLSOURCE_HSI, LL_RCC_PLLM_DIV_1, 20, LL_RCC_PLLR_DIV_2);
   LL_RCC_PLL_EnableDomain_SYS();
   LL_RCC_PLL_Enable();
    /* Wait till PLL is ready */

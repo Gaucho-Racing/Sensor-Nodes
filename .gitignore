@@ -63,4 +63,3 @@ dkms.conf
 *.zip
 **/.build
 **/build
-.vscode
