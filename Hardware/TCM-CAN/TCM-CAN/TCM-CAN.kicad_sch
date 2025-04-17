@@ -5565,10 +5565,28 @@
 			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAES/KSSetSLGhBYknHemBjuztytAM6DSZ/kArfiO"
+			"5Qa5HT5Sswrq4DuQH2rppPQ55rUsgDFLSL0pa1IClpKKAHgnFOqOigCTOKaDTaB1oA811HQNLS8X"
+			"7frM82Q29ZbgKB0x/wDqqndXXhzTZFurKOJgzkMUBYyDI3DB/GtS/sfD6CdmAuJCyzM5LSbjkA8/"
+			"TtVZ9SsdQs5rLTbFkXymiEjRiNdx5A55H8XFc9r7Ht8zdnK7Qk/jASqEtLTaoYEF29Oeg/lWLqF/"
+			"eXxHnSswLcKBx+VX7PwhfRoEnnijK4wV5BHf34q9c2un6IodplkmwVbByTx6fWsGpv4mbylQjpTV"
+			"2cHcApdvnjkA561s6YxG1R03YI71nX8pnvJpcD945OP0q/p6BUX5s/MDj2q+h5ctZM3oQQmXGSet"
+			"XoCcqMZOecCq8CADgZyBxmr1pDhuTgZ6Z60FLRGgi4XqR6ZNTKuVyfwPaowjIMjnI47VLE20c4JN"
+			"UkQ2JJHlfnBJ7YqNFUd+vG01bOCMI4Df3c1G20HBAUnj5uM0xXIhtxngZ9aNueoAx/FTiAc7efao"
+			"9pJwHI9ulILgPc8dfl6ClzIx68j1xSqrLk8/N1zRj059dp4pgCktgAbW/u5GKeA38Q/DimHbuGWG"
+			"7GeTzipAwfHzZI7Yp3ExwDvjHI96cCqDGw59QaavTkH+VSKVC5JyPc0riIplWVMMuQezDNVo4BbY"
+			"VR8h9O1aW4bevB7Yo2LkHH6VDY7hDtdQrdanis4hljj1zio41VPu9fepwd6FSSMjtVJ3FZo4zW0S"
+			"O58yMBHJ3OR2Ungf59qitNQjjnVnPJ4J7GpfEkj3WpQ2cELYLfMwHVvT8MVK/haJ4l82do5RypVe"
+			"B6VLR0KS5dSa6utsiJbZxJztA6mrrsYVUSMFbb696qWVjLbgOwDSbT8+OgrLvXN7fxo8rgKclc43"
+			"VKbTuZytbQ14QEbzHc7s8AfwipmYtklnUe5rOS8H3SuD79anL7lO5g2O3WlcixcRlVcpj6tzT47n"
+			"5gWlB9qzBNJ8wViFA4G2rMEmM/Mc+m3pTTCyNTzw2QFYZ9qry5z8qsRRHO7tgfmxqWQ8EM5qiWis"
+			"211w2/H0rMuRGr/IrfjVmWZI8glmz2FUZ3zyqkUmNDWLMMZAA7U15fkwvQVGrnfggHFR3G/d049B"
+			"SBl6xk3yDBrr7IkxjPpXHWB2soA612NgP3QJ9K3pGUy8KdSAU6tzIMUYoooAKKKKACgdaKUdaAOD"
+			"g1Kytri4s7a2kmhGAqhcBHJbIOelM1aa9Zoo47RFt/MyJy2SOO6j8q0tTuRLG0JjtbXq26W4Xd0I"
+			"6Lk1mSahFfILVJ2uBgLss7Uken33/wAK53fZng=="
 		)
 	)
-	(global_label "SPI1_MISO"
+	(global_label "SPI_MISO"
 		(shape input)
 		(at 180.34 130.81 180)
 		(fields_autoplaced yes)
@@ -5580,7 +5598,7 @@
 		)
 		(uuid "085014d9-be1d-4345-8884-7fd05738b50c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 167.4972 130.81 0)
+			(at 168.7067 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5700,7 +5718,29 @@
 			)
 		)
 	)
-	(global_label "CANL3"
+	(global_label "12V"
+		(shape input)
+		(at 143.51 87.63 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "200f73eb-ad4b-4b0b-ae04-1252b2fa588c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 137.0172 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "CAN2_N"
 		(shape input)
 		(at 217.17 102.87 180)
 		(fields_autoplaced yes)
@@ -5712,7 +5752,7 @@
 		)
 		(uuid "25fd98b7-cdde-44c4-91f2-22acd935463d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 208.2581 102.87 0)
+			(at 206.9881 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5722,7 +5762,7 @@
 			)
 		)
 	)
-	(global_label "CANH2"
+	(global_label "CAN1_P"
 		(shape input)
 		(at 180.34 110.49 180)
 		(fields_autoplaced yes)
@@ -5734,7 +5774,7 @@
 		)
 		(uuid "30931454-3944-48ea-812a-cad4a94a108c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 171.1257 110.49 0)
+			(at 170.2186 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5898,7 +5938,7 @@
 			)
 		)
 	)
-	(global_label "SPI1_MOSI"
+	(global_label "SPI_MOSI"
 		(shape input)
 		(at 180.34 133.35 180)
 		(fields_autoplaced yes)
@@ -5910,7 +5950,7 @@
 		)
 		(uuid "7266eefc-d2a5-4d2e-b770-452ea07775fd")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 167.4972 133.35 0)
+			(at 168.7067 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5986,7 +6026,7 @@
 			)
 		)
 	)
-	(global_label "PA4"
+	(global_label "SPI_CS"
 		(shape input)
 		(at 180.34 138.43 180)
 		(fields_autoplaced yes)
@@ -5998,7 +6038,7 @@
 		)
 		(uuid "9597b68c-f715-4f79-98ce-cd6e7f2e06d1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 173.7867 138.43 0)
+			(at 170.8234 138.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6008,7 +6048,7 @@
 			)
 		)
 	)
-	(global_label "SPI1_SCK"
+	(global_label "SPI_SCK"
 		(shape input)
 		(at 180.34 135.89 180)
 		(fields_autoplaced yes)
@@ -6020,7 +6060,7 @@
 		)
 		(uuid "964495af-0d9a-4fe0-9d2f-e849f511ba23")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 168.3439 135.89 0)
+			(at 169.5534 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6052,7 +6092,7 @@
 			)
 		)
 	)
-	(global_label "CANH3"
+	(global_label "CAN2_P"
 		(shape input)
 		(at 217.17 100.33 180)
 		(fields_autoplaced yes)
@@ -6064,7 +6104,7 @@
 		)
 		(uuid "bc0561fc-ed94-4473-aafb-1811b9fbf976")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 207.9557 100.33 0)
+			(at 207.0486 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6096,7 +6136,7 @@
 			)
 		)
 	)
-	(global_label "CANL2"
+	(global_label "CAN1_N"
 		(shape input)
 		(at 180.34 107.95 180)
 		(fields_autoplaced yes)
@@ -6108,7 +6148,7 @@
 		)
 		(uuid "dc7aa371-5b86-42dc-a0f5-cf5e0c1d646a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 171.4281 107.95 0)
+			(at 170.1581 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6153,6 +6193,28 @@
 		(uuid "e2aec60e-87d1-4d41-9e1d-9a3d8c5e3444")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 205.1134 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 143.51 90.17 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "e6dfe981-a24e-420b-98ed-607cb84c6c30")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 136.6543 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6290,6 +6352,72 @@
 			(project "TCM-CAN"
 				(path "/dce5d582-08ac-45e6-8e98-75b83df6efb2"
 					(reference "#PWR033")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 143.51 90.17 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "26f585b4-d536-4dad-ae60-724a5810d031")
+		(property "Reference" "#PWR02"
+			(at 143.51 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 143.51 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 143.51 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 143.51 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 143.51 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "12185f4e-e864-4420-b9c1-0dcd8cdeb478")
+		)
+		(instances
+			(project ""
+				(path "/dce5d582-08ac-45e6-8e98-75b83df6efb2"
+					(reference "#PWR02")
 					(unit 1)
 				)
 			)
@@ -6966,6 +7094,72 @@
 			(project "TCM-CAN"
 				(path "/dce5d582-08ac-45e6-8e98-75b83df6efb2"
 					(reference "#PWR029")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+12V")
+		(at 143.51 87.63 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "af59908f-df64-4dc8-891b-6255345d105f")
+		(property "Reference" "#PWR01"
+			(at 143.51 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+12V"
+			(at 143.51 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 143.51 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 143.51 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+12V\""
+			(at 143.51 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e7d49d8a-aaa1-4bbf-ab3e-e2bd537b6a31")
+		)
+		(instances
+			(project ""
+				(path "/dce5d582-08ac-45e6-8e98-75b83df6efb2"
+					(reference "#PWR01")
 					(unit 1)
 				)
 			)
