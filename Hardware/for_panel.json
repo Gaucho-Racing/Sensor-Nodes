@@ -1,0 +1,22 @@
+{
+    "layout": {
+        "vspace": "2mm"
+    },
+    "tabs": {
+        "type": "fixed",
+        "vwidth": "5mm",
+        "hwidth": "5mm",
+        "fillet": "1mm"
+    },
+    "cuts": {
+        "type": "mousebites"
+    },
+    "framing": {
+        "type": "railstb",
+        "vspace": "3mm",
+        "fillet": "1mm"
+    },
+    "tooling": {
+        "type": "3hole"
+    }
+}
