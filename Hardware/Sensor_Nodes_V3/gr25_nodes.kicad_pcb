@@ -4285,7 +4285,7 @@
 		(descr "SOIC, 8 Pin (JEDEC MS-012AA, https://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/soic_narrow-r/r_8.pdf), generated with kicad-footprint-generator ipc_gullwing_generator.py")
 		(tags "SOIC SO")
 		(property "Reference" "U3"
-			(at -3.075 3.735 180)
+			(at 0 -3.4 90)
 			(layer "F.SilkS")
 			(uuid "93a32bea-a66d-421d-9b4b-e9058b62d4ff")
 			(effects
@@ -4306,9 +4306,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/MCP2542FD-4FD-MCP2542WFD-4WFD-Data-Sheet20005514B.pdf"
+		(property "Datasheet" ""
 			(at 0 0 90)
-			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "04014d5d-55d7-4c5b-9f9d-bca5d08eab42")
@@ -4319,9 +4318,8 @@
 				)
 			)
 		)
-		(property "Description" "CAN-FD Transceiver, Wake-Up on CAN activity, 8Mbps, 5V supply, STBY pin, 3x3 DFN-8"
+		(property "Description" ""
 			(at 0 0 90)
-			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "8af3ad19-26c2-4ccc-980b-74598c7e3a93")
@@ -4338,48 +4336,48 @@
 		(sheetfile "Main_MCU.kicad_sch")
 		(attr smd)
 		(fp_line
-			(start 0 -2.559999)
+			(start 0 -2.56)
 			(end 1.95 -2.56)
 			(stroke
 				(width 0.12)
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "2a540f54-3040-4405-a4e8-f69d060e31db")
+			(uuid "3f4e76b6-e408-46bf-9424-c7351d4d645a")
 		)
 		(fp_line
-			(start 0 -2.559999)
+			(start 0 -2.56)
 			(end -1.95 -2.56)
 			(stroke
 				(width 0.12)
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "192a410d-7e5d-41b9-b499-895df5bfb5e7")
+			(uuid "354090fa-32a5-45d1-97b9-b50e8cce6ef4")
 		)
 		(fp_line
-			(start 0 2.559999)
+			(start 0 2.56)
 			(end 1.95 2.56)
 			(stroke
 				(width 0.12)
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "b140bdd2-d3df-4d40-bab5-72632978f727")
+			(uuid "a5784de3-892c-409d-8efe-c0a4ab045184")
 		)
 		(fp_line
-			(start 0 2.559999)
+			(start 0 2.56)
 			(end -1.95 2.56)
 			(stroke
 				(width 0.12)
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "c4ff124c-e07d-432e-a8f2-3dbcd21723d2")
+			(uuid "74dcac8a-51b2-4929-ac1d-e28d5b690f4c")
 		)
 		(fp_poly
 			(pts
-				(xy -2.7 -2.465) (xy -2.939999 -2.795) (xy -2.46 -2.795) (xy -2.7 -2.465)
+				(xy -2.7 -2.465) (xy -2.94 -2.795) (xy -2.46 -2.795)
 			)
 			(stroke
 				(width 0.12)
@@ -4387,57 +4385,18 @@
 			)
 			(fill yes)
 			(layer "F.SilkS")
-			(uuid "0998c94f-a3d1-4f20-bee8-98ee084c7964")
+			(uuid "f53e9c89-a93f-4adb-a6ea-950add8340b2")
 		)
-		(fp_line
-			(start 3.7 -2.7)
-			(end -3.7 -2.7)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "13db2047-1702-4bb9-9ca6-7d6fbfe6ca03")
-		)
-		(fp_line
+		(fp_rect
 			(start -3.7 -2.7)
-			(end -3.7 2.7)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "dd8e0bac-6892-4e24-84bb-6a965d9efd6a")
-		)
-		(fp_line
-			(start 3.7 2.7)
-			(end 3.7 -2.7)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "910bd1e1-ef71-42bd-96dd-483bc8462110")
-		)
-		(fp_line
-			(start -3.7 2.7)
 			(end 3.7 2.7)
 			(stroke
 				(width 0.05)
 				(type solid)
 			)
+			(fill no)
 			(layer "F.CrtYd")
-			(uuid "a7615cdd-735a-4b18-882b-560025b4fe9e")
-		)
-		(fp_line
-			(start -0.975 -2.450001)
-			(end 1.95 -2.45)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "e74d4805-c03e-4b4e-8a0d-96715402257a")
+			(uuid "1fcc648c-ad83-4863-8871-dc14cd92f847")
 		)
 		(fp_line
 			(start 1.95 -2.45)
@@ -4447,17 +4406,27 @@
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "73722948-d1e5-4485-ae3c-b01d5be19d04")
+			(uuid "1da6c26d-7381-4008-873e-3f94e7343eba")
 		)
 		(fp_line
-			(start -1.95 -1.475)
-			(end -0.975 -2.450001)
+			(start -0.975 -2.45)
+			(end 1.95 -2.45)
 			(stroke
 				(width 0.1)
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "eb178fe3-f260-440e-9382-664e618a98d6")
+			(uuid "8a261444-3d5c-46cf-a32d-ced5911e91b3")
+		)
+		(fp_line
+			(start -1.95 -1.475)
+			(end -0.975 -2.45)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "f41691bc-3e36-4e44-8450-36848bcce958")
 		)
 		(fp_line
 			(start 1.95 2.45)
@@ -4467,7 +4436,7 @@
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "da866620-4c74-451c-b4e4-68e2ed8cf2be")
+			(uuid "d6bdba61-295b-409a-9371-74e7ebb5aaa3")
 		)
 		(fp_line
 			(start -1.95 2.45)
@@ -4477,7 +4446,7 @@
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "be6c7284-9567-4e74-8861-2fff3dddefeb")
+			(uuid "0a004170-81c9-44a1-85a8-aa9484941337")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 0 0 90)
@@ -4571,7 +4540,7 @@
 			(uuid "236052e9-3aa9-4747-a199-64cd5be0406b")
 		)
 		(embedded_fonts no)
-		(model "${KICAD8_3DMODEL_DIR}/Package_SO.3dshapes/SOIC-8_3.9x4.9mm_P1.27mm.wrl"
+		(model "${KICAD9_3DMODEL_DIR}/Package_SO.3dshapes/SOIC-8_3.9x4.9mm_P1.27mm.wrl"
 			(offset
 				(xyz 0 0 0)
 			)
