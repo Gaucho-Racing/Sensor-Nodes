@@ -53,6 +53,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     Core/Extras/VL53L4ED/platform.c
     Core/Extras/VL53L4ED/VL53L4ED_api.c
     Core/Extras/VL53L4ED/VL53L4ED_calibration.c
+    Core/Src/bmi323.c
 )
 
 # Add include paths

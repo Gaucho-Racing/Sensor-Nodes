@@ -70,7 +70,8 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 
 /* USER CODE BEGIN Private defines */
-
+#define BMI323_CS_GPIO_Port GPIOB
+#define BMI323_CS_Pin       GPIO_PIN_4
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

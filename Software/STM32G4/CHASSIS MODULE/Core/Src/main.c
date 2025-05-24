@@ -28,12 +28,14 @@
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
 #include "VL53L4ED_api.h"
+#include "bmi323.h"
 //#include "circularBuffer.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+#define BMI323_CS_GPIO_Port GPIOB
+#define BMI323_CS_Pin       GPIO_PIN_4
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -118,6 +120,19 @@ int main(void)
   // HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
   // HAL_FDCAN_ActivateNotification(&hfdcan2, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
 
+  // Send 2 dummy bytes to switch BMI323 to SPI mode
+  uint16_t dummy_byte = 0x8000;
+  HAL_GPIO_WritePin(BMI323_CS_GPIO_Port, BMI323_CS_Pin, GPIO_PIN_RESET);
+  HAL_SPI_Transmit(&hspi3,(uint8_t*)&dummy_byte, 1, HAL_MAX_DELAY);
+  HAL_GPIO_WritePin(BMI323_CS_GPIO_Port, BMI323_CS_Pin, GPIO_PIN_SET); 
+  //HAL_Delay(1);  // Short delay after mode switch
+
+  // Initialize BMI323 sensor
+  printf("Init BMI323 sensor...\r\n");
+  if (BMI323_Init() != HAL_OK) {
+    printf("BMI323 initialization failed!\r\n");
+    Error_Handler();
+  }
   
   // static uint16_t eeMLX90640[832];
   // static paramsMLX90640 mlx90640;
@@ -134,6 +149,8 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  //begin VL53L4ED
+  HAL_Delay(100); // wait for 5ms to power up the device
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_RESET); //TOF_L_XSHUT_Pin
   HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET); //TOF_C_XSHUT_Pin
   HAL_Delay(100); // wait for 5ms to reset the device
@@ -155,6 +172,7 @@ int main(void)
   status = VL53L4ED_SetRangeTiming(TOF_ID, 50, 70);
   status = VL53L4ED_SetOffset(TOF_ID, 50); // Set offset to 0 for testing
 
+
   while (1)
   { 
     // HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan1, &TxHeader, TxData);
@@ -162,25 +180,29 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    //begin VL53L4ED
     status = VL53L4ED_CheckForDataReady(TOF_ID, &p_data_ready);
     if(p_data_ready){
-
-			/* (Mandatory) Clear HW interrupt to restart measurements */
-			VL53L4ED_ClearInterrupt(TOF_ID);
-
-			/* Read measured distance. RangeStatus = 0 means valid data */
-			VL53L4ED_GetResult(TOF_ID, &results);
-			printf("Status = %3u, Distance = %5u mm, Signal = %6u kcps/spad\n",
-					results.range_status,
-					results.distance_mm- 67,
-					results.signal_per_spad_kcps);
+      /* (Mandatory) Clear HW interrupt to restart measurements */
+      VL53L4ED_ClearInterrupt(TOF_ID);
+      /* Read measured distance. RangeStatus = 0 means valid data */
+      VL53L4ED_GetResult(TOF_ID, &results);
+      printf("Status = %3u, Distance = %5u mm, Signal = %6u kcps/spad\n",
+              results.range_status,
+              results.distance_mm- 67,
+              results.signal_per_spad_kcps);
       }else{
         HAL_Delay(10);
         __disable_irq();
         __enable_irq();
       }
     
-    
+    //begin BMI323
+    int16_t ax, ay, az;
+    if (BMI323_ReadAccel(&ax, &ay, &az) == HAL_OK) {
+        printf("Accel: X=%d, Y=%d, Z=%d\r\n", ax, ay, az);
+    }
+    HAL_Delay(100);  // Read every 100ms
   }
   /* USER CODE END 3 */
 }
@@ -195,7 +217,7 @@ void SystemClock_Config(void)
   while(LL_FLASH_GetLatency() != LL_FLASH_LATENCY_4)
   {
   }
-  LL_PWR_EnableRange1BoostMode();
+  LL_PWR_SetRegulVoltageScaling(LL_PWR_REGU_VOLTAGE_SCALE1);
   LL_RCC_HSE_EnableBypass();
   LL_RCC_HSE_Enable();
    /* Wait till HSE is ready */
@@ -203,7 +225,7 @@ void SystemClock_Config(void)
   {
   }
 
-  LL_RCC_PLL_ConfigDomain_SYS(LL_RCC_PLLSOURCE_HSE, LL_RCC_PLLM_DIV_1, 40, LL_RCC_PLLR_DIV_2);
+  LL_RCC_PLL_ConfigDomain_SYS(LL_RCC_PLLSOURCE_HSE, LL_RCC_PLLM_DIV_1, 32, LL_RCC_PLLR_DIV_2);
   LL_RCC_PLL_EnableDomain_SYS();
   LL_RCC_PLL_Enable();
    /* Wait till PLL is ready */
@@ -225,7 +247,7 @@ void SystemClock_Config(void)
   LL_RCC_SetAHBPrescaler(LL_RCC_SYSCLK_DIV_1);
   LL_RCC_SetAPB1Prescaler(LL_RCC_APB1_DIV_1);
   LL_RCC_SetAPB2Prescaler(LL_RCC_APB2_DIV_1);
-  LL_SetSystemCoreClock(160000000);
+  LL_SetSystemCoreClock(128000000);
 
    /* Update the time base */
   if (HAL_InitTick (TICK_INT_PRIORITY) != HAL_OK)
@@ -259,7 +281,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   /* USER CODE BEGIN Callback 0 */
 
   /* USER CODE END Callback 0 */
-  if (htim->Instance == TIM1) {
+  if (htim->Instance == TIM1)
+  {
     HAL_IncTick();
   }
   /* USER CODE BEGIN Callback 1 */

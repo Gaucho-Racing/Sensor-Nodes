@@ -10,7 +10,11 @@
         "math.h": "c",
         "gpio.h": "c",
         "cmath": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "bmi323.h": "c"
     },
-    "cortex-debug.variableUseNaturalFormat": false
+    "cortex-debug.variableUseNaturalFormat": false,
+    "stm32-for-vscode.openOCDPath": "C:\\msys64\\mingw64\\bin\\openocd.EXE",
+    "stm32-for-vscode.makePath": false,
+    "stm32-for-vscode.armToolchainPath": "C:\\Program Files (x86)\\GNU Arm Embedded Toolchain\\10 2021.10\\bin"
 }
