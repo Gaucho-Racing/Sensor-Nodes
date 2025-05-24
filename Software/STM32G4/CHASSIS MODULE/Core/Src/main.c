@@ -119,20 +119,22 @@ int main(void)
   // HAL_FDCAN_Start(&hfdcan2);
   // HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
   // HAL_FDCAN_ActivateNotification(&hfdcan2, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
-
+  bmi323 bmi323_dev;
+  HAL_GPIO_WritePin(BMI323_CS_GPIO_Port, BMI323_CS_Pin, GPIO_PIN_SET);
+  bmi323_init(&bmi323_dev, &hspi3, BMI323_CS_GPIO_Port, BMI323_CS_Pin);
   // Send 2 dummy bytes to switch BMI323 to SPI mode
-  uint16_t dummy_byte = 0x8000;
-  HAL_GPIO_WritePin(BMI323_CS_GPIO_Port, BMI323_CS_Pin, GPIO_PIN_RESET);
-  HAL_SPI_Transmit(&hspi3,(uint8_t*)&dummy_byte, 1, HAL_MAX_DELAY);
-  HAL_GPIO_WritePin(BMI323_CS_GPIO_Port, BMI323_CS_Pin, GPIO_PIN_SET); 
+  // uint16_t dummy_byte = 0x8000;
+  // HAL_GPIO_WritePin(BMI323_CS_GPIO_Port, BMI323_CS_Pin, GPIO_PIN_RESET);
+  // HAL_SPI_Transmit(&hspi3,(uint8_t*)&dummy_byte, 1, HAL_MAX_DELAY);
+  // HAL_GPIO_WritePin(BMI323_CS_GPIO_Port, BMI323_CS_Pin, GPIO_PIN_SET); 
   //HAL_Delay(1);  // Short delay after mode switch
 
   // Initialize BMI323 sensor
-  printf("Init BMI323 sensor...\r\n");
-  if (BMI323_Init() != HAL_OK) {
-    printf("BMI323 initialization failed!\r\n");
-    Error_Handler();
-  }
+
+  // if (BMI323_Init() != HAL_OK) {
+  //   printf("BMI323 initialization failed!\r\n");
+  //   Error_Handler();
+  // }
   
   // static uint16_t eeMLX90640[832];
   // static paramsMLX90640 mlx90640;
@@ -198,10 +200,10 @@ int main(void)
       }
     
     //begin BMI323
-    int16_t ax, ay, az;
-    if (BMI323_ReadAccel(&ax, &ay, &az) == HAL_OK) {
-        printf("Accel: X=%d, Y=%d, Z=%d\r\n", ax, ay, az);
-    }
+    // int16_t ax, ay, az;
+    // if (BMI323_ReadAccel(&ax, &ay, &az) == HAL_OK) {
+    //     printf("Accel: X=%d, Y=%d, Z=%d\r\n", ax, ay, az);
+    // }
     HAL_Delay(100);  // Read every 100ms
   }
   /* USER CODE END 3 */

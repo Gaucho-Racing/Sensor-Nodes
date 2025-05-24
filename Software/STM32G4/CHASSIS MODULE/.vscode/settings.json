@@ -11,7 +11,10 @@
         "gpio.h": "c",
         "cmath": "c",
         "stdio.h": "c",
-        "bmi323.h": "c"
+        "bmi323.h": "c",
+        "spi.h": "c",
+        "vl53l4ed_api.h": "c",
+        "stm32g474xx.h": "c"
     },
     "cortex-debug.variableUseNaturalFormat": false,
     "stm32-for-vscode.openOCDPath": "C:\\msys64\\mingw64\\bin\\openocd.EXE",
