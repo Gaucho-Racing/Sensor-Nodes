@@ -506,7 +506,7 @@
       "plot": "../../../Desktop/grbrs/",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "gr25_nodes.step",
       "svg": "",
       "vrml": ""
     },

@@ -142,7 +142,7 @@ int main(void)
   MX_FDCAN1_Init();
   MX_SPI1_Init();
   MX_CRC_Init();
-  MX_FDCAN2_Init();
+  // MX_FDCAN2_Init();
   /* USER CODE BEGIN 2 */
   cb = circular_buffer_init(64, 72);
   GPIOA->BSRR = (uint32_t)GPIO_PIN_4;
@@ -157,20 +157,33 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
   while (1)
   {
     
-    if(wTransferState == TRANSFER_COMPLETE)
-    {
-      uint16_t *tmp2 = circularBufferPop(cb);
-      if(tmp2 != NULL){
-        wTransferState = TRANSFER_WAIT;
+    // if(wTransferState == TRANSFER_COMPLETE)
+    // {
+    //   uint16_t *tmp2 = circularBufferPop(cb);
+    //   if(tmp2 != NULL){
+    //     wTransferState = TRANSFER_WAIT;
         
-        HAL_SPI_TransmitReceive_DMA(&hspi1, (uint8_t *)tmp2, (uint8_t *)RxData, 36);
-        GPIOA->BRR = (uint32_t)GPIO_PIN_4;
+    //     HAL_SPI_TransmitReceive_DMA(&hspi1, (uint8_t *)tmp2, (uint8_t *)RxData, 36);
+    //     GPIOA->BRR = (uint32_t)GPIO_PIN_4;
 
-      }
-    }
+    //   }
+    // }
+
+    HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_0);
+    HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_1);
+    HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_0);
+    HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_1);
+
+    // printf("Hello World!\n");
+    HAL_Delay(100);
+    // GPIOA->BRR = GPIO_BRR_BR0;
+    // GPIOF->BRR = GPIO_BRR_BR1;
+  
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
